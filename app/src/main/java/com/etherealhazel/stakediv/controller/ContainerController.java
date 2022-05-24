@@ -1,5 +1,6 @@
 package com.etherealhazel.stakediv.controller;
 
+import com.etherealhazel.stakediv.dto.ContainerDto;
 import com.etherealhazel.stakediv.model.Container;
 import com.etherealhazel.stakediv.service.ContainerService;
 
@@ -23,9 +24,9 @@ public class ContainerController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public HttpEntity<Container> createContainer(@RequestBody Container container) {
+    public HttpEntity<ContainerDto> createContainer(@RequestBody Container container) {
         containerService.createContainer(container);
-        return new HttpEntity<Container>(container);
+        return new HttpEntity<ContainerDto>(new ContainerDto(container.getName()));
 
     }
 }
