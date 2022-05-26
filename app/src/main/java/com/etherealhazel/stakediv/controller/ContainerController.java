@@ -1,11 +1,14 @@
 package com.etherealhazel.stakediv.controller;
 
+import java.util.List;
+
 import com.etherealhazel.stakediv.dto.ContainerDto;
 import com.etherealhazel.stakediv.model.Container;
 import com.etherealhazel.stakediv.service.ContainerService;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,5 +31,12 @@ public class ContainerController {
         containerService.createContainer(container);
         return new HttpEntity<ContainerDto>(new ContainerDto(container.getName()));
 
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public HttpEntity<List<Container>> getAllContainers() {
+        List<Container> containers = containerService.getAllContainers();
+        return new HttpEntity<>(containers);        
     }
 }

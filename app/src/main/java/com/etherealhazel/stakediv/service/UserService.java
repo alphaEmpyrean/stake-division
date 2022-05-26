@@ -1,8 +1,6 @@
 package com.etherealhazel.stakediv.service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 import com.etherealhazel.stakediv.model.AppUser;
 import com.etherealhazel.stakediv.repo.UserRepository;
