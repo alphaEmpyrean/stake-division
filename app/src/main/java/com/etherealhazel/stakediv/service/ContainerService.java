@@ -1,6 +1,8 @@
 package com.etherealhazel.stakediv.service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import com.etherealhazel.stakediv.model.Container;
 import com.etherealhazel.stakediv.repo.ContainerRepository;
@@ -32,6 +34,12 @@ public class ContainerService {
     @Transactional
     public void deleteAllContainers() {
         containerRepository.deleteAll();
+    }
+
+    public Container getContainer(UUID containerId) {
+        Optional<Container> container = containerRepository.findById(containerId);
+        if (container.isPresent()) {return container.get();}
+        else {return null;}
     }
 
 }
