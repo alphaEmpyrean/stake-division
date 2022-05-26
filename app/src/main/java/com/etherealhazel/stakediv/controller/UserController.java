@@ -1,5 +1,7 @@
 package com.etherealhazel.stakediv.controller;
 
+import java.util.List;
+
 import com.etherealhazel.stakediv.dto.UserDto;
 import com.etherealhazel.stakediv.model.AppUser;
 import com.etherealhazel.stakediv.service.UserService;
@@ -7,6 +9,7 @@ import com.etherealhazel.stakediv.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,5 +35,12 @@ public class UserController {
         userService.createUser(user);
         return new HttpEntity<UserDto>(
             new UserDto(user.getUsername(), user.getFirstName()));
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public HttpEntity<List<AppUser>> getAllUsers() {
+        List<AppUser> users = userService.getAllUsers();
+        return new HttpEntity<List<AppUser>>(users);
     }
 }
