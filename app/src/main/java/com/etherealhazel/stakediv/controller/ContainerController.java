@@ -8,6 +8,7 @@ import com.etherealhazel.stakediv.service.ContainerService;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,7 +31,6 @@ public class ContainerController {
     public HttpEntity<ContainerDto> createContainer(@RequestBody Container container) {
         containerService.createContainer(container);
         return new HttpEntity<ContainerDto>(new ContainerDto(container.getName()));
-
     }
 
     @GetMapping
@@ -38,5 +38,11 @@ public class ContainerController {
     public HttpEntity<List<Container>> getAllContainers() {
         List<Container> containers = containerService.getAllContainers();
         return new HttpEntity<>(containers);        
+    }
+
+    @DeleteMapping
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteAllContainers() {
+        containerService.deleteAllContainers();
     }
 }

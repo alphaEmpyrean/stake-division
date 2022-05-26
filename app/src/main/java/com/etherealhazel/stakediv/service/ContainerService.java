@@ -7,6 +7,7 @@ import com.etherealhazel.stakediv.repo.ContainerRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ContainerService {
@@ -18,6 +19,7 @@ public class ContainerService {
         this.containerRepository = containerRepository;
     }
 
+    @Transactional
     public void createContainer(Container container) {
         containerRepository.save(container);
     }
@@ -25,6 +27,11 @@ public class ContainerService {
     public List<Container> getAllContainers() {
         List<Container> containers = containerRepository.findAll();
         return containers;
+    }
+
+    @Transactional
+    public void deleteAllContainers() {
+        containerRepository.deleteAll();
     }
 
 }

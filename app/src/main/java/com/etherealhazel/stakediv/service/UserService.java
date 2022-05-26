@@ -34,6 +34,7 @@ public class UserService {
         return users;
     }
 
+    @Transactional
     public void deleteAllUsers() {
         userRepository.deleteAll();
     }
