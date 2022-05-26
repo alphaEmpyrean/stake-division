@@ -1,6 +1,7 @@
 package com.etherealhazel.stakediv.controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import com.etherealhazel.stakediv.dto.UserDto;
 import com.etherealhazel.stakediv.model.AppUser;
@@ -9,8 +10,10 @@ import com.etherealhazel.stakediv.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -50,6 +53,13 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public void deleteAllUsers() {
         userService.deleteAllUsers();        
+    }
+
+    @GetMapping("/{uuid}")
+    public HttpEntity<AppUser> getUser(@PathVariable("uuid") UUID userId) {
+        AppUser user = userService.getUser(userId);
+        if (user != null) {return new ResponseEntity<AppUser>(user, HttpStatus.OK);}
+        else {return new ResponseEntity<AppUser>(HttpStatus.NOT_FOUND);}
     }
    
 }
