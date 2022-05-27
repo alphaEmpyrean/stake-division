@@ -34,14 +34,13 @@ public class UserController {
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
-    public ResponseEntity<UserDto> create(@RequestBody AppUser user){
-        AppUser savedUser = userService.createUser(user);
-        if (savedUser != null) {
-            return new ResponseEntity<UserDto>(
-                new UserDto(savedUser.getUsername(), savedUser.getFirstName()),HttpStatus.CREATED);
-        } else {
-            return new ResponseEntity<UserDto>(HttpStatus.CONFLICT);
-        }
+    public ResponseEntity<UserDto> create(@RequestBody AppUser newUser){
+        AppUser user = userService.createUser(newUser);
+        return user != null ?
+            new ResponseEntity<UserDto>(new UserDto(user.getUsername(),
+                user.getFirstName()), HttpStatus.CREATED) :
+            new ResponseEntity<UserDto>(HttpStatus.CONFLICT);
+        
         
     }
 
@@ -61,8 +60,9 @@ public class UserController {
     @GetMapping("/{uuid}")
     public HttpEntity<AppUser> getUser(@PathVariable("uuid") UUID userId) {
         AppUser user = userService.getUser(userId);
-        if (user != null) {return new ResponseEntity<AppUser>(user, HttpStatus.OK);}
-        else {return new ResponseEntity<AppUser>(HttpStatus.NOT_FOUND);}
+        return user != null ? 
+            new ResponseEntity<AppUser>(user, HttpStatus.OK) :
+            new ResponseEntity<AppUser>(HttpStatus.NOT_FOUND);
     }
    
 }

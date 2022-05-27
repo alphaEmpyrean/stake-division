@@ -38,8 +38,7 @@ public class ContainerService {
 
     public Container getContainer(UUID containerId) {
         Optional<Container> container = containerRepository.findById(containerId);
-        if (container.isPresent()) {return container.get();}
-        else {return null;}
+        return container.isPresent() ? container.get() : null;
     }
 
 }

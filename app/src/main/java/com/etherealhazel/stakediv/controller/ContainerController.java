@@ -52,7 +52,8 @@ public class ContainerController {
     @GetMapping("/{uuid}")
     public ResponseEntity<Container> getContainer(@PathVariable("uuid") UUID containerId) {
         Container container = containerService.getContainer(containerId);
-        if (container != null) {return new ResponseEntity<Container>(container, HttpStatus.OK);}
-        else{ return new ResponseEntity<Container>(HttpStatus.NOT_FOUND);}
+        return container != null ? 
+            new ResponseEntity<Container>(container, HttpStatus.OK) :
+            new ResponseEntity<Container>(HttpStatus.NOT_FOUND);
     }
 }
