@@ -34,12 +34,15 @@ public class UserController {
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
-    @ResponseStatus(HttpStatus.CREATED)
-    public HttpEntity<UserDto> create(@RequestBody AppUser user){
+    public ResponseEntity<UserDto> create(@RequestBody AppUser user){
+        AppUser savedUser = userService.createUser(user);
+        if (savedUser != null) {
+            return new ResponseEntity<UserDto>(
+                new UserDto(savedUser.getUsername(), savedUser.getFirstName()),HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<UserDto>(HttpStatus.CONFLICT);
+        }
         
-        userService.createUser(user);
-        return new HttpEntity<UserDto>(
-            new UserDto(user.getUsername(), user.getFirstName()));
     }
 
     @GetMapping

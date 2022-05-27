@@ -24,7 +24,7 @@ public class AppUser {
     @Column(name = "USER_ID", columnDefinition = "uuid")
     private UUID userID;
 
-    @Column(name = "USERNAME")
+    @Column(name = "USERNAME", unique = true)
     private String username;
 
     @Column(name = "FIRST_NAME")

@@ -22,13 +22,8 @@ public class UserService {
     }
 
     @Transactional
-    public void createUser(AppUser user) {
-        if (userRepository.findByUsername(user.getUsername()).isEmpty()) {
-            userRepository.save(user);
-        } else {
-            user.setUsername(user.getUsername() + "boop");
-            userRepository.save(user);
-        }        
+    public AppUser createUser(AppUser user) {
+        return userRepository.findByUsername(user.getUsername()).isEmpty() ? userRepository.save(user) : null;
     }
 
     public List<AppUser> getAllUsers() {
@@ -43,8 +38,7 @@ public class UserService {
 
     public AppUser getUser(UUID userId) {
         Optional<AppUser> user = userRepository.findById(userId);
-        if (user.isPresent()) {return user.get();}
-        else {return null;}      
+        return user.isPresent() ? user.get() : null;    
     }
 
 }
