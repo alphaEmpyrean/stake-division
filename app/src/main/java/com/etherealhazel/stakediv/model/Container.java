@@ -11,13 +11,6 @@ import javax.persistence.Id;
 @Entity
 public class Container {
     
-    public Container() {
-    }
-    
-    public Container(String name) {
-        this.name = name;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "CONTAINER_ID", columnDefinition = "uuid")

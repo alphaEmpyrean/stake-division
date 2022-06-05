@@ -11,14 +11,6 @@ import javax.persistence.Id;
 @Entity
 public class AppUser {
 
-    public AppUser() {
-    }
-
-    public AppUser(String username, String firstName) {
-        this.username = username;
-        this.firstName = firstName;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "USER_ID", columnDefinition = "uuid")
