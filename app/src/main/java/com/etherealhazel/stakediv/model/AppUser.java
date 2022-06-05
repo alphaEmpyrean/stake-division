@@ -8,9 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
+
 import javax.persistence.ManyToMany;
+
+import com.etherealhazel.stakediv.serializer.EmbeddedContainerSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 
 @Entity
 public class AppUser {
@@ -18,7 +21,7 @@ public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "USER_ID", columnDefinition = "uuid")
-    private UUID userID;
+    private UUID userId;
 
     @Column(name = "USERNAME", unique = true)
     private String username;
@@ -26,18 +29,16 @@ public class AppUser {
     @Column(name = "FIRST_NAME")
     private String firstName;
 
-    @ManyToMany
-    @JoinTable(name = "APP_USER_CONTAINER",
-        joinColumns = @JoinColumn(name = "USER_ID"), 
-        inverseJoinColumns = @JoinColumn(name = "CONTAINER_ID"))
+    @JsonSerialize(using = EmbeddedContainerSerializer.class)
+    @ManyToMany(mappedBy = "users")   
     private List<Container> containers;
 
-    public UUID getUserID() {
-        return userID;
+    public UUID getUserId() {
+        return userId;
     }
 
-    public void setUserID(UUID userID) {
-        this.userID = userID;
+    public void setUserId(UUID userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
