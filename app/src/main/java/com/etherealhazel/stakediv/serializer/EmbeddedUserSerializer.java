@@ -3,8 +3,8 @@ package com.etherealhazel.stakediv.serializer;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
+import com.etherealhazel.stakediv.dto.EmbeddedUserDto;
 import com.etherealhazel.stakediv.model.AppUser;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -28,38 +28,5 @@ public class EmbeddedUserSerializer extends StdSerializer<List<AppUser>> {
             usersDto.add(new EmbeddedUserDto(user.getUsername(), user.getUserId()));
         }
         gen.writeObject(usersDto);        
-    }
-
-    public class EmbeddedUserDto {
-
-        
-        public EmbeddedUserDto(String username, UUID id) {
-            this.username = username;
-            this.id = id;
-        }
-
-        private String username;
-
-        private UUID id;
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public UUID getId() {
-            return id;
-        }
-
-        public void setId(UUID id) {
-            this.id = id;
-        }
-
-        
-    }
-
-    
+    }    
 }
