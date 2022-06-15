@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,9 +32,9 @@ public class ContainerController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public HttpEntity<ContainerDto> createContainer(@RequestBody Container container) {
+    public HttpEntity<Container> createContainer(@RequestBody Container container) {
         containerService.createContainer(container);
-        return new HttpEntity<ContainerDto>(new ContainerDto(container.getName()));
+        return new HttpEntity<Container>(container);
     }
 
     @GetMapping
@@ -53,7 +54,16 @@ public class ContainerController {
     public ResponseEntity<Container> getContainer(@PathVariable("uuid") UUID containerId) {
         Container container = containerService.getContainer(containerId);
         return container != null ? 
-            new ResponseEntity<Container>(container, HttpStatus.OK) :
-            new ResponseEntity<Container>(HttpStatus.NOT_FOUND);
+            new ResponseEntity<>(container, HttpStatus.OK) :
+            new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PatchMapping("/{parentUuid}/childContainer/{childUuid}")
+    public ResponseEntity<ContainerDto> addChildContainer(@PathVariable("parentUuid") UUID parentId, @PathVariable("childUuid") UUID childId) {
+        Container container = containerService.addChildContainer(parentId, childId);
+
+        return container != null ? 
+            new ResponseEntity<ContainerDto>(new ContainerDto(container.getName()), HttpStatus.OK) :
+            new ResponseEntity<ContainerDto>(HttpStatus.NOT_FOUND);
     }
 }

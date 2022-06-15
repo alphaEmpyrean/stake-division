@@ -1,5 +1,6 @@
 package com.etherealhazel.stakediv.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -37,8 +38,34 @@ public class ContainerService {
     }
 
     public Container getContainer(UUID containerId) {
-        Optional<Container> container = containerRepository.findById(containerId);
-        return container.isPresent() ? container.get() : null;
+        Optional<Container> oContainer = containerRepository.findById(containerId);
+        Container container = oContainer.isPresent() ? oContainer.get() : null;
+        return container;
+    }
+
+    @Transactional
+    public Container addChildContainer(UUID parentId, UUID childUuid) {
+        Container childContainer = getContainer(childUuid);
+        Container parentContainer = getContainer(parentId);
+        
+        List<Container> tempChildList = new ArrayList<>();
+        tempChildList.add(childContainer);
+
+        parentContainer.getChildContainers().clear();
+        parentContainer.getChildContainers().addAll(tempChildList);
+        
+        childContainer.setParentContainer(parentContainer);
+
+        List<Container> entities = new ArrayList<>();
+
+        entities.add(childContainer);
+        entities.add(parentContainer);
+
+       
+        entities = containerRepository.saveAll(entities);
+
+        return entities.get(0);
+        
     }
 
 }
