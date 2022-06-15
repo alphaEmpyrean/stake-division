@@ -1,3 +1,4 @@
+//https://docs.spring.io/spring-boot/docs/2.3.8.RELEASE/reference/html/spring-boot-features.html#boot-features-json-components
 package com.etherealhazel.stakediv.serializer;
 
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class EmbeddedContainerSerializer extends StdSerializer<List<Container>>{
     public void serialize(List<Container> containers, JsonGenerator gen, SerializerProvider provider) throws IOException, JsonProcessingException {
         List<EmbeddedContainerDto> containersDto = new ArrayList<>();
         for (Container container : containers) {
-            containersDto.add(new EmbeddedContainerDto(container.getName(), container.getContainerId()));
+            containersDto.add(new EmbeddedContainerDto(container.getName(), container.getUuid()));
         }
         gen.writeObject(containersDto);        
     }    

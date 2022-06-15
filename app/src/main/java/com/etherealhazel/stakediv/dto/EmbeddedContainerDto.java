@@ -4,14 +4,14 @@ import java.util.UUID;
 
 public class EmbeddedContainerDto {        
 
-    public EmbeddedContainerDto(String name, UUID containerId) {
+    public EmbeddedContainerDto(String name, UUID uuid) {
         this.name = name;
-        this.containerId = containerId;
+        this.uuid = uuid;
     }
 
     private String name;
 
-    private UUID containerId;
+    private UUID uuid;
 
     public String getName() {
         return name;
@@ -21,12 +21,12 @@ public class EmbeddedContainerDto {
         this.name = name;
     }
 
-    public UUID getContainerId() {
-        return containerId;
+    public UUID getuuid() {
+        return uuid;
     }
 
-    public void setContainerId(UUID containerId) {
-        this.containerId = containerId;
+    public void setuuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
 }
