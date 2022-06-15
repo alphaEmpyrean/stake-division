@@ -8,7 +8,6 @@ import java.util.UUID;
 import com.etherealhazel.stakediv.model.Container;
 import com.etherealhazel.stakediv.repo.ContainerRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +16,6 @@ public class ContainerService {
 
     final ContainerRepository containerRepository;
 
-    @Autowired
     public ContainerService(ContainerRepository containerRepository) {
         this.containerRepository = containerRepository;
     }
@@ -39,6 +37,7 @@ public class ContainerService {
 
     public Container getContainer(UUID containerId) {
         Optional<Container> oContainer = containerRepository.findById(containerId);
+        oContainer.orElse(null);
         Container container = oContainer.isPresent() ? oContainer.get() : null;
         return container;
     }

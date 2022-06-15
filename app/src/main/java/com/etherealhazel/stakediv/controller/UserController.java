@@ -7,7 +7,6 @@ import com.etherealhazel.stakediv.dto.UserDto;
 import com.etherealhazel.stakediv.model.AppUser;
 import com.etherealhazel.stakediv.service.UserService;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +26,7 @@ public class UserController {
     
     final UserService userService;
  
-    @Autowired
     public UserController(UserService userService) {
-
         this.userService = userService;
     }
 
