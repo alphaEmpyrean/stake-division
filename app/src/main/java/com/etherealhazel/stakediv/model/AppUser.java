@@ -20,8 +20,8 @@ public class AppUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "USER_ID", columnDefinition = "uuid")
-    private UUID userId;
+    @Column(name = "UUID", columnDefinition = "uuid")
+    private UUID uuid;
 
     @Column(name = "USERNAME", unique = true)
     private String username;
@@ -33,12 +33,12 @@ public class AppUser {
     @ManyToMany(mappedBy = "users")   
     private List<Container> containers;
 
-    public UUID getUserId() {
-        return userId;
+    public UUID getUuid() {
+        return uuid;
     }
 
-    public void setUserId(UUID userId) {
-        this.userId = userId;
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
     public String getUsername() {

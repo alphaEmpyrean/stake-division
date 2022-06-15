@@ -25,7 +25,7 @@ public class Container {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "CONTAINER_ID", columnDefinition = "uuid")
+    @Column(name = "UUID", columnDefinition = "uuid")
     private UUID uuid;
 
     @Column(name = "NAME")
@@ -34,8 +34,8 @@ public class Container {
     @JsonSerialize(using = EmbeddedUserSerializer.class)
     @ManyToMany
     @JoinTable(name = "CONTAINER_APP_USER", 
-        joinColumns = @JoinColumn(name = "CONTAINER_ID"), 
-        inverseJoinColumns = @JoinColumn(name = "USER_ID"))
+        joinColumns = @JoinColumn(name = "CONTAINER_UUID", referencedColumnName = "UUID"), 
+        inverseJoinColumns = @JoinColumn(name = "USER_UUID", referencedColumnName = "UUID"))
     private Set<AppUser> users;
 
     @ManyToOne(fetch = FetchType.EAGER)

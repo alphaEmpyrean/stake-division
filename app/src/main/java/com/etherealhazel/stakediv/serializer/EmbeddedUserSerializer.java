@@ -26,7 +26,7 @@ public class EmbeddedUserSerializer extends StdSerializer<Set<AppUser>> {
     public void serialize(Set<AppUser> users, JsonGenerator gen, SerializerProvider provider) throws IOException, JsonProcessingException {
         Set<EmbeddedUserDto> usersDto = new HashSet<>();
         for (AppUser user : users) {
-            usersDto.add(new EmbeddedUserDto(user.getUsername(), user.getUserId()));
+            usersDto.add(new EmbeddedUserDto(user.getUsername(), user.getUuid()));
         }
         gen.writeObject(usersDto);        
     }    
