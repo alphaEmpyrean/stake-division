@@ -33,8 +33,7 @@ public class ContainerController {
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public HttpEntity<Container> createContainer(@RequestBody Container container) {
-        containerService.createContainer(container);
-        return new HttpEntity<Container>(container);
+        return new HttpEntity<>(containerService.createContainer(container));
     }
 
     @GetMapping
