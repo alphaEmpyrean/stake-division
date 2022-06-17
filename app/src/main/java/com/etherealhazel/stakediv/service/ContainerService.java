@@ -57,10 +57,9 @@ public class ContainerService {
 
         List<Container> entities = new ArrayList<>();
 
-        entities.add(childContainer);
         entities.add(parentContainer);
-
-       
+        entities.add(childContainer);
+               
         entities = containerRepository.saveAll(entities);
 
         return entities.get(0);
