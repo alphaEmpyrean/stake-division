@@ -1,4 +1,4 @@
-package com.etherealhazel.temp;
+package com.etherealhazel.stakediv;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
