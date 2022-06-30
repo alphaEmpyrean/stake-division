@@ -1,11 +1,8 @@
-package com.etherealhazel.stakediv.service;
+package com.etherealhazel.stakediv.user;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-
-import com.etherealhazel.stakediv.model.AppUser;
-import com.etherealhazel.stakediv.repo.UserRepository;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

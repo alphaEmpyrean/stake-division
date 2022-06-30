@@ -1,4 +1,4 @@
-package com.etherealhazel.stakediv.dto;
+package com.etherealhazel.stakediv.user;
 
 import java.util.UUID;
 

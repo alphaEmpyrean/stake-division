@@ -1,12 +1,10 @@
 //https://docs.spring.io/spring-boot/docs/2.3.8.RELEASE/reference/html/spring-boot-features.html#boot-features-json-components
-package com.etherealhazel.stakediv.serializer;
+package com.etherealhazel.stakediv.container;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.etherealhazel.stakediv.dto.EmbeddedContainerDto;
-import com.etherealhazel.stakediv.model.Container;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializerProvider;
