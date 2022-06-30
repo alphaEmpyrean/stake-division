@@ -21,8 +21,8 @@ public class ContainerService {
     }
 
     @Transactional
-    public void createContainer(Container container) {
-        containerRepository.save(container);
+    public Container createContainer(Container container) {
+        return containerRepository.save(container); 
     }
 
     public List<Container> getAllContainers() {
@@ -57,10 +57,9 @@ public class ContainerService {
 
         List<Container> entities = new ArrayList<>();
 
-        entities.add(childContainer);
         entities.add(parentContainer);
-
-       
+        entities.add(childContainer);
+               
         entities = containerRepository.saveAll(entities);
 
         return entities.get(0);
