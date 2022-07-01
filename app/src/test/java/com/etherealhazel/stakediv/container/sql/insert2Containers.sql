@@ -1,0 +1,2 @@
+INSERT INTO container(NAME, PARENT_CONTAINER, UUID) VALUES ('root', NULL , 'd576ab3b-8a36-4dff-b50c-9d9d4ca6072c');
+INSERT INTO container(NAME, PARENT_CONTAINER, UUID) VALUES ('child', NULL , 'a81bc81b-dead-4e5d-abff-90865d1e13b1');

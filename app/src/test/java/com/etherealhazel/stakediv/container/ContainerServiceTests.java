@@ -27,7 +27,7 @@ public class ContainerServiceTests {
 
     @Test
     @DisplayName("Create container successfully")
-    public void createContainerTest() {
+    public void createContainer_None_ReturnNewContainerObject() {
 
         Container newContainer = new Container();
         when(containerRepository.save(newContainer)).thenReturn(newContainer);
@@ -37,7 +37,7 @@ public class ContainerServiceTests {
 
     @Test
     @DisplayName("Get all containers successfully")
-    public void getAllContainersTest() {
+    public void getAllContainers_RepoWith3Entities_Return3Objects() {
 
         when(containerRepository.findAll()).thenReturn(
             Stream.of(
@@ -50,8 +50,8 @@ public class ContainerServiceTests {
     }
 
     @Test
-    @DisplayName("Get 1 container")
-    public void getContainerTest() {
+    @DisplayName("Get container by UUID successfully")
+    public void getContainer_ContainerExists_ReturnsCorrectContainerObject() {
 
         Container container = new Container();
         container.setUuid(UUID.randomUUID());
@@ -61,8 +61,8 @@ public class ContainerServiceTests {
     }
 
     @Test
-    @DisplayName("Create child container relationship successfully")
-    public void addChildContainerTest() {
+    @DisplayName("Add child container relationship successfully")
+    public void addChildContainer_BothContainersExist_ReturnUpdatedParentContainer() {
 
         Container parentContainer = new Container(), childContainer = new Container();
         parentContainer.setUuid(UUID.randomUUID());
