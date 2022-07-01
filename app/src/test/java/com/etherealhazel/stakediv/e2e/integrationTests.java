@@ -9,7 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.BodyInserters;
 
-import com.etherealhazel.stakediv.dto.ContainerDto;
+import com.etherealhazel.stakediv.container.ContainerDto;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class integrationTests {

@@ -1,11 +1,7 @@
-package com.etherealhazel.stakediv.controller;
+package com.etherealhazel.stakediv.user;
 
 import java.util.List;
 import java.util.UUID;
-
-import com.etherealhazel.stakediv.dto.UserDto;
-import com.etherealhazel.stakediv.model.AppUser;
-import com.etherealhazel.stakediv.service.UserService;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;

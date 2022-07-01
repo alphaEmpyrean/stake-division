@@ -1,4 +1,4 @@
-package com.etherealhazel.stakediv.model;
+package com.etherealhazel.stakediv.user;
 
 import java.util.List;
 import java.util.UUID;
@@ -11,7 +11,8 @@ import javax.persistence.Id;
 
 import javax.persistence.ManyToMany;
 
-import com.etherealhazel.stakediv.serializer.EmbeddedContainerSerializer;
+import com.etherealhazel.stakediv.container.Container;
+import com.etherealhazel.stakediv.container.EmbeddedContainerSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 

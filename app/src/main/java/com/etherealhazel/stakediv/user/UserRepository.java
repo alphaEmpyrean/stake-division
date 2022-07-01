@@ -1,9 +1,7 @@
-package com.etherealhazel.stakediv.repo;
+package com.etherealhazel.stakediv.user;
 
 import java.util.Optional;
 import java.util.UUID;
-
-import com.etherealhazel.stakediv.model.AppUser;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

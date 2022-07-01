@@ -1,11 +1,7 @@
-package com.etherealhazel.stakediv.controller;
+package com.etherealhazel.stakediv.container;
 
 import java.util.List;
 import java.util.UUID;
-
-import com.etherealhazel.stakediv.dto.ContainerDto;
-import com.etherealhazel.stakediv.model.Container;
-import com.etherealhazel.stakediv.service.ContainerService;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;

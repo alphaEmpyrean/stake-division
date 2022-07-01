@@ -1,6 +1,6 @@
 //https://www.youtube.com/watch?v=kXhYu939_5s
 
-package com.etherealhazel.stakediv.service;
+package com.etherealhazel.stakediv.container;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -15,9 +15,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
-import com.etherealhazel.stakediv.model.Container;
-import com.etherealhazel.stakediv.repo.ContainerRepository;
 
 @SpringBootTest(classes = {ContainerService.class, ContainerRepository.class})
 public class ContainerServiceTests {

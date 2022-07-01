@@ -1,4 +1,4 @@
-package com.etherealhazel.stakediv.dto;
+package com.etherealhazel.stakediv.container;
 
 public class ContainerDto {
     

@@ -1,12 +1,9 @@
-package com.etherealhazel.stakediv.service;
+package com.etherealhazel.stakediv.container;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-
-import com.etherealhazel.stakediv.model.Container;
-import com.etherealhazel.stakediv.repo.ContainerRepository;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
