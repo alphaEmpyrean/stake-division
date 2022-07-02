@@ -30,7 +30,7 @@ public class E2eWithServerContainerTests {
             .body(BodyInserters.fromValue(containerDto))
             .exchange()
             .expectStatus().isCreated()
-            .expectBody(ContainerDto.class);
+            .expectBody(Container.class);
     }
 
     @Test
@@ -41,7 +41,7 @@ public class E2eWithServerContainerTests {
             .uri("http://localhost:" + port + "/api/container")
             .exchange()
             .expectStatus().isAccepted()
-            .expectBodyList(ContainerDto.class).hasSize(2);
+            .expectBodyList(Container.class).hasSize(2);
     }
     
     @Test
@@ -55,6 +55,6 @@ public class E2eWithServerContainerTests {
             .uri("http://localhost:" + port + "/api/container/" + parentUuid + "/childContainer/" + childUuid)
             .exchange()
             .expectStatus().isOk()
-            .expectBody(ContainerDto.class);
+            .expectBody(Container.class);
     }
 }
