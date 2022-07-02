@@ -10,7 +10,6 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,7 +25,6 @@ public class ContainerServiceTests {
     public ContainerRepository containerRepository;
 
     @Test
-    @DisplayName("Create container successfully")
     public void createContainer_None_ReturnNewContainerObject() {
 
         Container newContainer = new Container();
@@ -36,7 +34,6 @@ public class ContainerServiceTests {
     }
 
     @Test
-    @DisplayName("Get all containers successfully")
     public void getAllContainers_RepoWith3Entities_Return3Objects() {
 
         when(containerRepository.findAll()).thenReturn(
@@ -50,7 +47,6 @@ public class ContainerServiceTests {
     }
 
     @Test
-    @DisplayName("Get container by UUID successfully")
     public void getContainer_ContainerExists_ReturnsCorrectContainerObject() {
 
         Container container = new Container();
@@ -61,7 +57,6 @@ public class ContainerServiceTests {
     }
 
     @Test
-    @DisplayName("Add child container relationship successfully")
     public void addChildContainer_BothContainersExist_ReturnUpdatedParentContainer() {
 
         Container parentContainer = new Container(), childContainer = new Container();

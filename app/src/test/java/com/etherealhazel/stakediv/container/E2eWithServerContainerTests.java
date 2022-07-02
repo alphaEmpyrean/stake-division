@@ -1,6 +1,5 @@
 package com.etherealhazel.stakediv.container;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,7 +20,6 @@ public class E2eWithServerContainerTests {
     private WebTestClient client;
       
     @Test
-    @DisplayName("E2E create container successfully")
     public void createContainer_None_ReturnContainerDto() {       
         
         ContainerDto containerDto = new ContainerDto("root");
@@ -37,7 +35,6 @@ public class E2eWithServerContainerTests {
 
     @Test
     @Sql({"sql/deleteAllRows.sql","sql/insert2Containers.sql"})
-    @DisplayName("E2E get all containers successfully")
     public void getAllContainers_2Preloaded_ReturnList2ConttainerDtos() {       
         
         client.get()
@@ -49,7 +46,6 @@ public class E2eWithServerContainerTests {
     
     @Test
     @Sql({"sql/deleteAllRows.sql","sql/insert2Containers.sql"})
-    @DisplayName("E2E add child container to parent successfully")
     public void addChildContainer_2Preloaded_ReturnUpdatedParentContainerDto() {
         
         //From Sql script
